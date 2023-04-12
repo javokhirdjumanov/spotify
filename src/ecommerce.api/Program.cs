@@ -1,4 +1,7 @@
 
+using ecommerce.api.Extensions;
+using ecommerce.infrastructure;
+
 namespace ecommerce.api
 {
     public class Program
@@ -7,9 +10,9 @@ namespace ecommerce.api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddControllers();
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services
+                .AddInfrastructure(builder.Configuration)
+                .AddApis();
 
             var app = builder.Build();
 
@@ -20,9 +23,7 @@ namespace ecommerce.api
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
             app.MapControllers();
 
             app.Run();
