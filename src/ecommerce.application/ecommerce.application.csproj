@@ -10,4 +10,10 @@
     <ProjectReference Include="..\ecommerce.domain\ecommerce.domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Address\" />
+    <Folder Include="Applications\Messaging\" />
+    <Folder Include="Users\" />
+  </ItemGroup>
+
 </Project>
