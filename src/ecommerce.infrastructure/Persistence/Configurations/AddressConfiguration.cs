@@ -43,6 +43,7 @@ public class AddressConfiguration : IEntityTypeConfiguration<Address>
         {
             new Address
             {
+                Id = Guid.Parse("bc56836e-0345-4f01-a883-47f39e32e077"),
                 Country = "USA",
                 City = "New York",
                 Region = "Sant Erias",
@@ -51,6 +52,7 @@ public class AddressConfiguration : IEntityTypeConfiguration<Address>
             },
             new Address
             {
+                Id = Guid.Parse("bc56836e-0345-4f01-a883-47f39e32e078"),
                 Country = "Spain",
                 City = "Madrid",
                 Region = "Estro",
