@@ -20,10 +20,10 @@ public static class Dependencies
     {
         services.AddDbContextPool<ApplicationDBContext>(options =>
         {
-            string connectionString = configuration.GetConnectionString("DefaultConnectionString");
+            string connectionString = configuration.GetConnectionString("SqlServer");
 
             options.UseSqlServer(
-                connectionString: connectionString, 
+                connectionString: connectionString,
                 sqlServerOptionsAction: options => options.EnableRetryOnFailure());
         });
 
