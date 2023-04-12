@@ -20,6 +20,6 @@ namespace ecommerce.domain.Entities
 
         public short PostalCode { get; set; }
 
-        public ICollection<Users> Users { get; set; }
+        public ICollection<Users>? Users { get; set; }
     }
 }
