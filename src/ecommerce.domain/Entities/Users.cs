@@ -28,6 +28,6 @@ namespace ecommerce.domain.Entities
         public UserRoles Role { get; set; }
 
         public Guid AddressId { get; set; }
-        public Address Address { get; set; }
+        public Address? Address { get; set; }
     }
 }
