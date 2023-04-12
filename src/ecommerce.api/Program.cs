@@ -1,5 +1,6 @@
 
 using ecommerce.api.Extensions;
+using ecommerce.application;
 using ecommerce.infrastructure;
 
 namespace ecommerce.api
@@ -12,6 +13,7 @@ namespace ecommerce.api
 
             builder.Services
                 .AddInfrastructure(builder.Configuration)
+                .AddAplication()
                 .AddApis();
 
             var app = builder.Build();
