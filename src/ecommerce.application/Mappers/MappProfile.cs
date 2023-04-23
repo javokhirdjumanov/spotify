@@ -6,6 +6,6 @@ public class MappProfile : Profile
 {
     public MappProfile()
     {
-        //CreateMap<CreateUserCommand, Users>();
+        //CreateMap<CreateUserCommand, User>();
     }
 }
