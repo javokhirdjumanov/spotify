@@ -1,5 +1,3 @@
-
-using ecommerce.api.Extensions;
 using ecommerce.application;
 using ecommerce.infrastructure;
 
