@@ -3,7 +3,7 @@ using ecommerce.domain.Repositories.Base;
 
 namespace ecommerce.domain.Repositories
 {
-    public interface IUserRepository : IRepository<Users>
+    public interface IUserRepository : IRepository<User>
     {
 
     }
