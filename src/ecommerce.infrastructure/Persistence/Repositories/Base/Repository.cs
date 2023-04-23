@@ -11,7 +11,8 @@ public class Repository<T> : IRepository<T> where T : class
     public void Insert(T entity)
         => this.context.Set<T>().Add(entity);
 
-    public async Task<IReadOnlyList<T>> SelectAllAsync(CancellationToken cancellationToken = default)
+    public async Task<IReadOnlyList<T>> SelectAllAsync(
+        CancellationToken cancellationToken = default)
     {
         return 
             await this.context
@@ -19,7 +20,9 @@ public class Repository<T> : IRepository<T> where T : class
             .ToListAsync(cancellationToken);
     }
 
-    public async Task<T> SelectAsync(CancellationToken cancellationToken = default, params object[] entityIds)
+    public async Task<T> SelectAsync(
+        CancellationToken cancellationToken = default,
+        params object[] entityIds)
     {
         return await this.context
             .Set<T>()
