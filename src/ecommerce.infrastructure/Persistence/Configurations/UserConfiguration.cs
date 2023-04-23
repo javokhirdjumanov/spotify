@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ecommerce.infrastructure.Persistence.Configurations;
-public class UserConfiguration : IEntityTypeConfiguration<Users>
+public class UserConfiguration : IEntityTypeConfiguration<User>
 {
-    public void Configure(EntityTypeBuilder<Users> builder)
+    public void Configure(EntityTypeBuilder<User> builder)
     {
         builder
             .ToTable(TableNames.Users);
@@ -52,11 +52,11 @@ public class UserConfiguration : IEntityTypeConfiguration<Users>
         builder
             .HasData(GenerationUsers());
     }
-    private List<Users> GenerationUsers()
+    private List<User> GenerationUsers()
     {
-        return new List<Users>
+        return new List<User>
         {
-            new Users
+            new User
             {
                 Id = Guid.Parse("bc56836e-0345-4f01-a883-47f39e32e079"),
                 Fullname = "Javokhir Djumanov",
