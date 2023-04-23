@@ -9,6 +9,6 @@ namespace ecommerce.domain.Constants
         public static string OrderDetalies = "OrderDetalies";
         public static string Orders = "Orders";
         public static string Products = "Products";
-        public static string Users = "Users";
+        public static string Users = "User";
     }
 }
