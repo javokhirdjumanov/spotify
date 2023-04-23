@@ -30,7 +30,7 @@ namespace ecommerce.infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
+                name: "User",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -64,13 +64,13 @@ namespace ecommerce.infrastructure.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Users",
+                table: "User",
                 columns: new[] { "Id", "AddressId", "Email", "Fullname", "Password", "Phonenumber", "Role", "Salt", "Username" },
                 values: new object[] { new Guid("bc56836e-0345-4f01-a883-47f39e32e079"), new Guid("bc56836e-0345-4f01-a883-47f39e32e077"), "javokhirdjumanov@gmail.com", "Javokhir Djumanov", "7777", "94 057 77 21", 1, "ea7ec171-8f1f-43ff-b2ce-cdef13ba8804", "javokhirdjumanov" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_AddressId",
-                table: "Users",
+                table: "User",
                 column: "AddressId");
         }
 
@@ -78,7 +78,7 @@ namespace ecommerce.infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "User");
 
             migrationBuilder.DropTable(
                 name: "Address");

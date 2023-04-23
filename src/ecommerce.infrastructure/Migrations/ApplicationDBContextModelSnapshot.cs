@@ -76,7 +76,7 @@ namespace ecommerce.infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ecommerce.domain.Entities.Users", b =>
+            modelBuilder.Entity("ecommerce.domain.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -122,7 +122,7 @@ namespace ecommerce.infrastructure.Migrations
 
                     b.HasIndex("AddressId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("User", (string)null);
 
                     b.HasData(
                         new
@@ -139,10 +139,10 @@ namespace ecommerce.infrastructure.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ecommerce.domain.Entities.Users", b =>
+            modelBuilder.Entity("ecommerce.domain.Entities.User", b =>
                 {
                     b.HasOne("ecommerce.domain.Entities.Address", "Address")
-                        .WithMany("Users")
+                        .WithMany("User")
                         .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -152,7 +152,7 @@ namespace ecommerce.infrastructure.Migrations
 
             modelBuilder.Entity("ecommerce.domain.Entities.Address", b =>
                 {
-                    b.Navigation("Users");
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }
