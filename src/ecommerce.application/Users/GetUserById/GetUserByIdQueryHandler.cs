@@ -5,14 +5,14 @@ using ecommerce.domain.Repositories;
 using ecommerce.domain.Shared;
 
 namespace ecommerce.application.Users.GetUserById;
-public class QueryHandler : IQueryHandler<Query, Response>
+public class GetUserByIdQueryHandler : IQueryHandler<GetUserByIdQuery, GetUserByIdResponse>
 {
     private readonly IUserRepository userRepository;
-    public QueryHandler(IUserRepository userRepository)
+    public GetUserByIdQueryHandler(IUserRepository userRepository)
         => this.userRepository = userRepository;
 
-    public async Task<Result<Response>> Handle(
-        Query request,
+    public async Task<Result<GetUserByIdResponse>> Handle(
+        GetUserByIdQuery request,
         CancellationToken cancellationToken)
     {
         User? isUser = await this.userRepository.SelectAsync(
@@ -21,11 +21,12 @@ public class QueryHandler : IQueryHandler<Query, Response>
 
         if(isUser == null)
         {
-            return Result.Failure<Response>(
+            return
+                Result.Failure<GetUserByIdResponse>(
                 DomainErrors.Users.NotFound(request.id));
         }
 
-        var response = new Response(
+        var response = new GetUserByIdResponse(
             isUser.Id,
             isUser.Fullname,
             isUser.Email,
