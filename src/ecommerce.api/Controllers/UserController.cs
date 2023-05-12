@@ -16,11 +16,14 @@ public class UserController : ApiController
     public async ValueTask<IActionResult> GetUserById(
         Guid id, CancellationToken cancellationToken)
     {
-        var query = new Query(id: id);
+        var query = new GetUserByIdQuery(id);
 
-        Result<Response> response = await this.sender.Send(query, cancellationToken);
+        Result<GetUserByIdResponse> response = await this.sender
+            .Send(query, cancellationToken);
 
-        return response.IsSuccess 
-            ? Ok(response) : BadRequest(response);
+        if(response.IsFailure)
+            return HandleFailure(response);
+
+        return Ok(response.Value);
     }
 }
