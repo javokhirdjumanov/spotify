@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 namespace ecommerce.infrastructure.Persistence.Repositories;
 public class Repository<T> : IRepository<T> where T : class
 {
-    private readonly ApplicationDBContext context;
+    protected readonly ApplicationDBContext context;
     public Repository(ApplicationDBContext context)
         => this.context = context;
 

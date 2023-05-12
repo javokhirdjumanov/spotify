@@ -5,6 +5,6 @@ namespace ecommerce.domain.Repositories
 {
     public interface IUserRepository : IRepository<User>
     {
-
+        ValueTask<IList<User>> GetAllUserWithAddress();
     }
 }
