@@ -1,4 +1,5 @@
-﻿using ecommerce.application.Users.GetUserById;
+﻿using ecommerce.application.Users.GetUserByAdrress;
+using ecommerce.application.Users.GetUserById;
 using ecommerce.domain.Shared;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -23,6 +24,24 @@ public class UserController : ApiController
 
         if(response.IsFailure)
             return HandleFailure(response);
+
+        return Ok(response.Value);
+    }
+
+    [HttpGet("/address/userId:guid")]
+    public async ValueTask<IActionResult> GetAddressByUserId(
+        Guid userId,
+        CancellationToken cancellationToken)
+    {
+        var query = new GetAddressByUserIdQuery(userId);
+
+        Result<GetAddressByUserIdResponse> response = await this.sender
+            .Send (query, cancellationToken);
+
+        if(response.IsFailure)
+        {
+            return HandleFailure(response);
+        }
 
         return Ok(response.Value);
     }
