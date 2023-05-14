@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ecommerce.application.Applications.Messaging;
 using ecommerce.application.Users.GetUserById;
+using ecommerce.domain.Errors;
 using ecommerce.domain.Repositories;
 using ecommerce.domain.Shared;
 

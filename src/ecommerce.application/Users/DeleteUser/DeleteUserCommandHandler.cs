@@ -1,4 +1,5 @@
 ﻿using ecommerce.application.Applications.Messaging;
+using ecommerce.domain.Errors;
 using ecommerce.domain.Repositories;
 using ecommerce.domain.Shared;
 
@@ -26,8 +27,7 @@ public class DeleteUserCommandHandler
         if(user is null)
         {
             return Result
-                .Failure<Guid>(new Error("User.NotFound", 
-                                         $"User with id: {request.id} not found"));
+                .Failure<Guid>(DomainErrors.Users.NotFound(request.id));
         }
 
         this.userRepository.Delete(user);

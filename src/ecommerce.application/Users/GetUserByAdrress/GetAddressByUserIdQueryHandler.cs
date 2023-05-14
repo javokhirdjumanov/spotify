@@ -1,5 +1,4 @@
 ﻿using ecommerce.application.Applications.Messaging;
-using ecommerce.domain.Entities;
 using ecommerce.domain.Errors;
 using ecommerce.domain.Repositories;
 using ecommerce.domain.Shared;
