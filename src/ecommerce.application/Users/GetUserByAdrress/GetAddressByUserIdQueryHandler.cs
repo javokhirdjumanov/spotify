@@ -1,5 +1,6 @@
 ﻿using ecommerce.application.Applications.Messaging;
 using ecommerce.domain.Entities;
+using ecommerce.domain.Errors;
 using ecommerce.domain.Repositories;
 using ecommerce.domain.Shared;
 
@@ -25,7 +26,7 @@ public class GetAddressByUserIdQueryHandler
         {
             return Result
                 .Failure<GetAddressByUserIdResponse>(
-                new Error("User.NotFound", $"User with Id {request.userId} not found."));
+                DomainErrors.Users.NotFound(request.userId));
         }
 
         var address =  new GetAddressByUserIdResponse(
