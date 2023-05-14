@@ -1,4 +1,5 @@
-﻿using ecommerce.application.Users.GetAllUsers;
+﻿using ecommerce.application.Users.DeleteUser;
+using ecommerce.application.Users.GetAllUsers;
 using ecommerce.application.Users.GetUserByAdrress;
 using ecommerce.application.Users.GetUserById;
 using ecommerce.domain.Shared;
@@ -9,7 +10,8 @@ namespace ecommerce.api.Controllers;
 [Route("api/[controller]")]
 public class UsersController : ApiController
 {
-    public UsersController(ISender sender) : base(sender)
+    public UsersController(ISender sender, IServiceProvider serviceProvider) 
+        : base(sender, serviceProvider)
     { }
 
     [HttpGet("{id:guid}")]
@@ -17,8 +19,8 @@ public class UsersController : ApiController
     {
         var query = new GetUserByIdQuery(id);
 
-        Result<GetUserByIdResponse> response = await this.sender
-            .Send(query, cancellationToken);
+        var response = 
+            await HandleAsync<GetUserByIdResponse, GetUserByIdQuery>(query, cancellationToken);
 
         if (response.IsFailure)
             return HandleFailure(response);
@@ -31,8 +33,8 @@ public class UsersController : ApiController
     {
         var query = new GetAddressByUserIdQuery(userId);
 
-        Result<GetAddressByUserIdResponse> response = await this.sender
-            .Send(query, cancellationToken);
+        var response =
+            await HandleAsync<GetAddressByUserIdResponse, GetAddressByUserIdQuery>(query, cancellationToken);
 
         if (response.IsFailure)
         {
@@ -47,8 +49,26 @@ public class UsersController : ApiController
     {
         var query = new GetAllUserQuery();
 
-        Result<GetAllUserResponse> response = await this.sender
-            .Send(query, cancellationToken);
+        var response =
+            await HandleAsync<GetAllUserResponse, GetAllUserQuery>(query, cancellationToken);
+
+        if (response.IsFailure)
+        {
+            return HandleFailure(response);
+        }
+
+        return Ok(response.Value);
+    }
+
+    [HttpDelete("id:guid")]
+    public async ValueTask<IActionResult> DeleteUser(
+        Guid id,
+        CancellationToken cancellationToken)
+    {
+        var command = new DeleteUserCommand(id);
+
+        Result<Guid> response = 
+            await this.sender.Send(command, cancellationToken);
 
         if (response.IsFailure)
         {
