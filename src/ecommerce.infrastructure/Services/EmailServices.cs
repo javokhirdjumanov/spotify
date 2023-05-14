@@ -1,4 +1,5 @@
-﻿using ecommerce.domain.Shared;
+﻿using ecommerce.domain.Interface;
+using ecommerce.domain.Shared;
 using ecommerce.infrastructure.Options;
 using MailKit.Net.Smtp;
 using MailKit.Security;
@@ -6,7 +7,7 @@ using Microsoft.Extensions.Options;
 using MimeKit;
 
 namespace ecommerce.infrastructure.Services;
-public sealed class EmailServices
+public sealed class EmailServices : IEmailServices
 {
     private readonly MailSettings mailSettings;
     public EmailServices(IOptions<MailSettings> options)
