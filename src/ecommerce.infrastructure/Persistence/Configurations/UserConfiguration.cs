@@ -24,6 +24,10 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .IsRequired(true);
 
         builder
+            .HasIndex(u => u.Email)
+            .IsUnique(true);
+
+        builder
             .Property(usr => usr.Username)
             .IsRequired(true);
 
@@ -44,30 +48,13 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .IsRequired(true);
 
         builder
+            .Property(usr => usr.LastLogin)
+            .IsRequired(false);
+
+        builder
             .HasOne(usr => usr.Address)
             .WithMany(ads => ads.Users)
             .HasForeignKey(usr => usr.AddressId)
             .OnDelete(DeleteBehavior.Cascade);
-
-        builder
-            .HasData(GenerationUsers());
-    }
-    private List<User> GenerationUsers()
-    {
-        return new List<User>
-        {
-            new User
-            {
-                Id = Guid.Parse("bc56836e-0345-4f01-a883-47f39e32e079"),
-                Fullname = "Javokhir Djumanov",
-                Email = "javokhirdjumanov@gmail.com",
-                Username = "javokhirdjumanov",
-                Phonenumber = "94 057 77 21",
-                Password = "7777",
-                Salt = Guid.NewGuid().ToString(),
-                Role = UserRoles.Admin,
-                AddressId = Guid.Parse("bc56836e-0345-4f01-a883-47f39e32e077"),
-            }
-        };
     }
 }
