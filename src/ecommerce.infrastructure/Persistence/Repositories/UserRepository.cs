@@ -13,4 +13,18 @@ public class UserRepository : Repository<User>, IUserRepository
     {
         return context.Set<User>().Include(u => u.Address).ToList();
     }
+
+    public async ValueTask<User> SelectUserWithEmailAsync(string email)
+    {
+        return await this.context.Set<User>()
+                                 .Where(user => user.Email == email)
+                                 .FirstOrDefaultAsync();
+    }
+
+    public async ValueTask<User> SelectUserWithOtpCodesAsync(Guid userId)
+    {
+        return await this.context.Set<User>()
+                                 .Include(u => u.OtpCodes)
+                                 .FirstOrDefaultAsync(u => u.Id == userId);
+    }
 }

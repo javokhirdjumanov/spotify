@@ -31,7 +31,7 @@ public static class Dependencies
                 sqlServerOptionsAction: options => options.EnableRetryOnFailure());
         });
 
-        // services.Configure<MailSettings>(configuration.GetSection("MailSettings"));
+        //services.Configure<MailSettings>(configuration.GetSection("MailSettings"));
         services.AddTransient<IEmailServices, EmailServices>();
 
         RegisterRepositories(services);
@@ -42,5 +42,6 @@ public static class Dependencies
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         services.AddTransient<IUserRepository, UserRepository>();
         services.AddTransient<IAddressRepository, AddressRepository>();
+        services.AddScoped<IOtpCodeRepository, OtpCodeRepository>();
     }
 }
