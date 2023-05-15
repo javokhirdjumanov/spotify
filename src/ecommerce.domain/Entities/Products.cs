@@ -2,7 +2,7 @@
 
 namespace ecommerce.domain.Entities
 {
-    public class Products
+    public sealed class Products
     {
         public Guid Id { get; set; }
 

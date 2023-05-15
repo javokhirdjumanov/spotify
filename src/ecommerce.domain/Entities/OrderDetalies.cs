@@ -1,6 +1,6 @@
 ﻿namespace ecommerce.domain.Entities
 {
-    public class OrderDetalies
+    public sealed class OrderDetalies
     {
         public Guid Id { get; set; }
 
