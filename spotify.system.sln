@@ -5,6 +5,14 @@ VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spotify.api", "src\spotify.api\spotify.api.csproj", "{5D495EB4-4D87-4A39-85FA-7E1A99C7E673}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spotify.core", "src\spotify.core\spotify.core.csproj", "{58A05E29-4391-4FA1-AC34-F4E0D5C74CB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spotify.bizlayer", "src\spotify.bizlayer\spotify.bizlayer.csproj", "{B930CF88-B48A-455E-8E5F-8087F9830F4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spotify.datalayer", "src\spotify.datalayer\spotify.datalayer.csproj", "{34099378-E2E1-4357-AAA6-64097929CF38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spotify.datalayer.pgsql", "src\spotify.datalayer.pgsql\spotify.datalayer.pgsql.csproj", "{16DBB2EF-741C-4881-93C7-FF52C1FEAEAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{5D495EB4-4D87-4A39-85FA-7E1A99C7E673}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D495EB4-4D87-4A39-85FA-7E1A99C7E673}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D495EB4-4D87-4A39-85FA-7E1A99C7E673}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58A05E29-4391-4FA1-AC34-F4E0D5C74CB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58A05E29-4391-4FA1-AC34-F4E0D5C74CB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58A05E29-4391-4FA1-AC34-F4E0D5C74CB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58A05E29-4391-4FA1-AC34-F4E0D5C74CB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B930CF88-B48A-455E-8E5F-8087F9830F4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B930CF88-B48A-455E-8E5F-8087F9830F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B930CF88-B48A-455E-8E5F-8087F9830F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B930CF88-B48A-455E-8E5F-8087F9830F4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34099378-E2E1-4357-AAA6-64097929CF38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34099378-E2E1-4357-AAA6-64097929CF38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34099378-E2E1-4357-AAA6-64097929CF38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34099378-E2E1-4357-AAA6-64097929CF38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16DBB2EF-741C-4881-93C7-FF52C1FEAEAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16DBB2EF-741C-4881-93C7-FF52C1FEAEAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16DBB2EF-741C-4881-93C7-FF52C1FEAEAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16DBB2EF-741C-4881-93C7-FF52C1FEAEAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
