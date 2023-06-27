@@ -1,4 +1,6 @@
 
+using spotify.datalayer;
+
 namespace spotify.api
 {
     public class Program
@@ -7,12 +9,9 @@ namespace spotify.api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services
+                .AddDataLayer(builder.Configuration)
+                .AddApis(builder.Configuration);
 
             var app = builder.Build();
 
