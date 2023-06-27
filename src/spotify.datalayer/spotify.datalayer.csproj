@@ -8,6 +8,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\spotify.core\spotify.core.csproj" />
+    <ProjectReference Include="..\spotify.datalayer.pgsql\spotify.datalayer.pgsql.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="EfClasses\Doc\" />
   </ItemGroup>
 
 </Project>
