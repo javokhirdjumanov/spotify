@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <Folder Include="EfClasses\Doc\" />
+    <Folder Include="Repositories\Doc\" />
+    <Folder Include="Repositories\HL\Users\QueryObjects\" />
   </ItemGroup>
 
 </Project>

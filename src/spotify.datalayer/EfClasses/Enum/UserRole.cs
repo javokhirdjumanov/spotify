@@ -1,12 +1,13 @@
 ﻿using spotify.datalayer.pgsql;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using WEBASE.Models;
 
 namespace spotify.datalayer.EfClasses
 {
     [Table("enum_user_role")]
 
-    public class UserRole
+    public class UserRole : IHaveIdProp<int>
     {
         [Key]
         [Column("id")]

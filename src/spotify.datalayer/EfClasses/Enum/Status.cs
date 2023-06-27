@@ -1,11 +1,12 @@
 ﻿using spotify.datalayer.pgsql;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WEBASE.Models;
 
 namespace spotify.datalayer.EfClasses
 {
     [Table("enum_status")]
-    public class Status
+    public class Status : IHaveIdProp<int>
     {
         [Key]
         [Column("id")]
