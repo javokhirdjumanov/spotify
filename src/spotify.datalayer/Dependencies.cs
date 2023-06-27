@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using spotify.datalayer.EfCode;
+using spotify.datalayer.Options;
+using spotify.datalayer.Repositories;
 
 namespace spotify.datalayer
 {
@@ -14,18 +16,24 @@ namespace spotify.datalayer
             services.AddDbContextPool<EfCoreContext>(options =>
             {
                 string connectionString = configuration
-                    .GetConnectionString("DefaultConnectionString");
+                    .GetConnectionString("DefaultConnectionString")!;
 
                 options.UseNpgsql(connectionString);
             });
 
-            //AddRepositories(services);
+            services.Configure<MailSettings>(configuration.GetSection(nameof(MailSettings)));
+
+            AddRepositories(ref services);
 
             return services;
         }
+
+        private static void AddRepositories(ref IServiceCollection services)
+        {
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IOtpCodeRepository, OtpCodeRepository>();
+            services.AddTransient<IUserSessionRepository, UserSessionRepository>();
+        }
     }
-    //private static void AddRepositories(IServiceCollection services)
-    //{
-        
-    //}
 }

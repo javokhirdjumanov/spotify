@@ -11,10 +11,4 @@
     <ProjectReference Include="..\spotify.datalayer.pgsql\spotify.datalayer.pgsql.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="EfClasses\Doc\" />
-    <Folder Include="Repositories\Doc\" />
-    <Folder Include="Repositories\HL\Users\QueryObjects\" />
-  </ItemGroup>
-
 </Project>
