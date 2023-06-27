@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WEBASE.Models;
 
 namespace spotify.datalayer.EfClasses
 {
     [Table("hl_user")]
-    public class User
+    public class User : IHaveIdProp<int>, IHaveStatusId
     {
         [Key]
         [Column("id")]

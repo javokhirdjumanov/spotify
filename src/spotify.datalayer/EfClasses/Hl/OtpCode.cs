@@ -2,9 +2,10 @@
 using spotify.datalayer.pgsql;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WEBASE.Models;
 
 namespace spotify.datalayer.EfClasses;
-public class OtpCode
+public class OtpCode : IHaveIdProp<int>
 {
     [Key]
     [Column("id")]
