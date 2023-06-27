@@ -6,4 +6,17 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
+    <PackageReference Include="WEBASE" Version="2023.2.18.1605" />
+    <PackageReference Include="WEBASE.AspNet" Version="2023.1.21.1530" />
+    <PackageReference Include="WEBASE.DependencyInjection" Version="2023.2.18.1647" />
+    <PackageReference Include="WEBASE.EF" Version="2023.2.18.1748" />
+  </ItemGroup>
+
 </Project>
