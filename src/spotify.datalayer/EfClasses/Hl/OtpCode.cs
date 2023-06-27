@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using WEBASE.Models;
 
 namespace spotify.datalayer.EfClasses;
+[Table("hl_otp_code")]
+
 public class OtpCode : IHaveIdProp<int>
 {
     [Key]
