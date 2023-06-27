@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WEBASE.Models;
 
 namespace spotify.datalayer.EfClasses
 {
-    public class UserSession
+    public class UserSession : IHaveIdProp<int>
     {
         [Key]
         [Column("id")]
