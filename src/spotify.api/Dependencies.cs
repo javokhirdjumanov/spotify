@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+﻿using spotify.datalayer.Options;
 
 namespace spotify.api;
 public static class Dependencies
