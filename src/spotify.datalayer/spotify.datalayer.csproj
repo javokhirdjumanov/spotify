@@ -11,8 +11,4 @@
     <ProjectReference Include="..\spotify.datalayer.pgsql\spotify.datalayer.pgsql.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Options\Claims\" />
-  </ItemGroup>
-
 </Project>
