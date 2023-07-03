@@ -10,9 +10,4 @@
     <ProjectReference Include="..\spotify.datalayer\spotify.datalayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\Auth\JwtTokenHandler\" />
-    <Folder Include="Services\Auth\PasswordHasher\" />
-  </ItemGroup>
-
 </Project>
