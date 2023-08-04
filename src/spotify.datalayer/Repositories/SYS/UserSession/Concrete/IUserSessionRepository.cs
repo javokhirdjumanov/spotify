@@ -2,7 +2,6 @@
 using WEBASE.EF;
 
 namespace spotify.datalayer.Repositories;
-public interface IUserSessionRepository
-    : IBaseEntityRepository<int, UserSession, CreatedUserSessionDlDto, UpdatedUserSessionDlDto>
+public interface IUserSessionRepository : IBaseRepository<UserSession>
 {
 }

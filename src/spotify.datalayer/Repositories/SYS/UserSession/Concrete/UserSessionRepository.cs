@@ -1,14 +1,12 @@
 ﻿using GenericServices;
 using spotify.datalayer.EfClasses;
+using spotify.datalayer.EfCode;
 using WEBASE.EF;
 
 namespace spotify.datalayer.Repositories;
-public class UserSessionRepository
-    : BaseEntityRepository<int, UserSession, CreatedUserSessionDlDto, UpdatedUserSessionDlDto>,
-    IUserSessionRepository
+public class UserSessionRepository : BaseRepository<UserSession>, IUserSessionRepository
 {
-    public UserSessionRepository(ICrudServices crudServices)
-        : base(crudServices)
+    public UserSessionRepository(EfCoreContext context)
+        : base(context)
     { }
-
 }
