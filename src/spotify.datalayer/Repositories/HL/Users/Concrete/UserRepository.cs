@@ -11,5 +11,13 @@ public class UserRepository
         : base(crudServices)
     { }
 
+    public async Task<User> SelectUserWithEmailAsync(string email)
+    {
+        throw new Exception();
+    }
 
+    public Task<User> SelectUserWithOtpCodesAsync(Guid userId)
+    {
+        throw new Exception();
+    }
 }
