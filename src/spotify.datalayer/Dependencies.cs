@@ -31,6 +31,7 @@ namespace spotify.datalayer
         private static void AddRepositories(ref IServiceCollection services)
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IOtpCodeRepository, OtpCodeRepository>();
             services.AddTransient<IUserSessionRepository, UserSessionRepository>();
