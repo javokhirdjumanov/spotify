@@ -5,7 +5,7 @@ using WEBASE.Models;
 
 namespace spotify.datalayer.EfClasses
 {
-    [Table("enum_state")]
+    [Table("enum_state", Schema = "adm")]
     public class State : IHaveIdProp<int>
     {
         [Key]
