@@ -1,8 +1,10 @@
-﻿using AutoMapper.Internal;
+﻿using MailKit.Net.Smtp;
+using MailKit.Security;
 using Microsoft.Extensions.Options;
 using MimeKit;
 using spotify.core.Shared;
 using spotify.datalayer.Options;
+
 
 namespace spotify.bizlayer.Services;
 public sealed class EmailService : IEmailService
@@ -13,7 +15,7 @@ public sealed class EmailService : IEmailService
         this.mailSettings = options.Value;
     }
 
-    public Task SendEmailAsync(MailRequest mailRequest)
+    public async Task SendEmailAsync(MailRequest mailRequest, CancellationToken cancellationToken)
     {
         var email = new MimeMessage();
 
@@ -21,7 +23,23 @@ public sealed class EmailService : IEmailService
         email.To.Add(MailboxAddress.Parse(mailRequest.ToEmail));
         email.Subject = mailRequest.Subject;
 
-        throw new NotImplementedException();
+        var builder = new BodyBuilder();
+        builder.HtmlBody = mailRequest.Body;
+        email.Body = builder.ToMessageBody();
 
+        using var smtpClient = new SmtpClient();
+
+        await smtpClient.ConnectAsync(
+            this.mailSettings.Host,
+            this.mailSettings.Port,
+            SecureSocketOptions.StartTls);
+
+        await smtpClient.AuthenticateAsync(
+            this.mailSettings.Mail,
+        this.mailSettings.Password);
+
+        await smtpClient.SendAsync(email, cancellationToken);
+
+        await smtpClient.DisconnectAsync(true);
     }
 }
