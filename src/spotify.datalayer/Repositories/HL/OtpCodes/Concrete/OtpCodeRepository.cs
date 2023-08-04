@@ -1,15 +1,9 @@
-﻿using GenericServices;
-using spotify.datalayer.EfClasses;
-using WEBASE.EF;
+﻿using spotify.datalayer.EfClasses;
+using spotify.datalayer.EfCode;
 
 namespace spotify.datalayer.Repositories;
-public class OtpCodeRepository
-    : BaseEntityRepository<int, OtpCode>,
-    IOtpCodeRepository
+public class OtpCodeRepository : BaseRepository<OtpCode>, IOtpCodeRepository
 {
-    public OtpCodeRepository(ICrudServices crudServices)
-        : base(crudServices)
+    public OtpCodeRepository(EfCoreContext context) : base(context)
     { }
-
-
 }
