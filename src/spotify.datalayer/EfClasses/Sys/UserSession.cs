@@ -5,7 +5,7 @@ using WEBASE.Models;
 
 namespace spotify.datalayer.EfClasses;
 
-[Table("sys_user_session")]
+[Table("sys_user_session", Schema = "public")]
 public class UserSession : IHaveIdProp<int>
 {
     [Key]
