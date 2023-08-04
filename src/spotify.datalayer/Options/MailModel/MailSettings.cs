@@ -1,5 +1,5 @@
 ﻿namespace spotify.datalayer.Options;
-internal sealed class MailSettings
+public sealed class MailSettings
 {
     public string Mail { get; set; } = string.Empty;
     public string DisplayName { get; set; } = string.Empty;
