@@ -4,7 +4,7 @@ using WEBASE.Models;
 
 namespace spotify.datalayer.EfClasses
 {
-    [Table("hl_user")]
+    [Table("hl_user", Schema = "hrm")]
     public class User : IHaveIdProp<int>, IHaveStatusId
     {
         [Key]
