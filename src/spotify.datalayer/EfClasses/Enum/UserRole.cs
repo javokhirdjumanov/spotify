@@ -5,7 +5,7 @@ using WEBASE.Models;
 
 namespace spotify.datalayer.EfClasses
 {
-    [Table("enum_user_role")]
+    [Table("enum_user_role", Schema = "adm")]
 
     public class UserRole : IHaveIdProp<int>
     {
