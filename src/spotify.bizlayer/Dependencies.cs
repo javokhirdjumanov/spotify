@@ -16,7 +16,10 @@ public static class Dependencies
         services.AddScoped<IPasswordHasher, PasswordHasher>();
 
         services.Configure<JwtOptions>(configuration.GetSection("JwtSettings"));
+
         services.AddTransient<IJwtTokenHandler, JwtTokenHandler>();
+
+        services.AddTransient<IEmailService, EmailService>();
 
         return services;
     }

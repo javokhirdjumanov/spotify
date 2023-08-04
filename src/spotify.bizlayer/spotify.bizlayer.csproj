@@ -10,4 +10,9 @@
     <ProjectReference Include="..\spotify.datalayer\spotify.datalayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\OtpCodes\Verify\" />
+    <Folder Include="Services\OtpCodes\Validations\" />
+  </ItemGroup>
+
 </Project>
