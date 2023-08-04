@@ -2,9 +2,8 @@
 using WEBASE.EF;
 
 namespace spotify.datalayer.Repositories;
-public interface IUserRepository
-    : IBaseEntityRepository<int, User, CreatedUserDlDto, UpdatedUserDlDto>
+public interface IUserRepository : IBaseRepository<User>
 {
-    Task<User> SelectUserWithOtpCodesAsync(Guid userId);
     Task<User> SelectUserWithEmailAsync(string email);
+    Task<User> SelectUserWithOtpCodesAsync(int userId);
 }
