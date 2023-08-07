@@ -16,8 +16,4 @@
     <ProjectReference Include="..\spotify.bizlayer\spotify.bizlayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
