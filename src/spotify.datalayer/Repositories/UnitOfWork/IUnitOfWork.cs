@@ -9,7 +9,7 @@ public interface IUnitOfWork
 
     Task<TRepository> GetRepository<TRepository>();
     Task<IDbContextTransaction> BeginTransaction();
-    Task SaveChangesAsync();
+    Task SaveChangesAsync(CancellationToken cancellationToken = default);
     Task CommitAsync();
     Task RollbackAsync();
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using spotify.core.Constants;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WEBASE.Models;
 
@@ -74,5 +75,25 @@ namespace spotify.datalayer.EfClasses
 
         [InverseProperty("User")]
         public virtual ICollection<UserSession> UserSessions { get; set; } = new List<UserSession>();
+
+        public User(string firstName, string lastName, string phone, string email, string salt, string passwordHash, int roleId)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Phone = phone;
+            Email = email;
+            Salt = salt;
+            PasswordHash = passwordHash;
+            RoleId = roleId;
+            StatusId = ConstStatus.NEW;
+        }
+
+        public void MarkAsActive() => StatusId = ConstState.ACTIVE;
+
+        public void UpdateRefreshToken(string refreshToken)
+        {
+            RefreshToken = refreshToken;
+            RefreshTokenExpireDate = DateTime.Now.AddDays(3);
+        }
     }
 }

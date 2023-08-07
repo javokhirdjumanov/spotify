@@ -5,7 +5,7 @@ public static class DomainError
 {
     public static class User
     {
-        public static readonly Func<Guid, Error> NotFound = id => new Error(
+        public static readonly Func<int, Error> NotFound = id => new Error(
             code: "User NotFound",
             message: $"The user with the identifier {id} was not found.");
 
