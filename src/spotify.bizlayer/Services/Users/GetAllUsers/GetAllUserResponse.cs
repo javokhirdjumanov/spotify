@@ -2,9 +2,9 @@
 public record GetAllUserResponse(IList<AllUserResponse> allUsers);
 
 public record AllUserResponse(
-    string firstName,
-    string lastName,
-    string phone,
-    string email,
-    string role,
-    string status);
+    string FirstName,
+    string LastName,
+    string Phone,
+    string Email,
+    string Role,
+    string Status);
