@@ -24,4 +24,8 @@
     <PackageReference Include="WEBASE.EF" Version="2023.2.18.1748" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="EfCode\" />
+  </ItemGroup>
+
 </Project>
