@@ -10,12 +10,12 @@ public class VerifyOtpCodeCommandHandler : ICommandHandler<VerifyOtpCodeCommand,
 {
     private readonly IUserRepository userRepository;
     private readonly IUnitOfWork unitOfWork;
-    private readonly OtpCodeRepository otpCodeRepository;
+    private readonly IOtpCodeRepository otpCodeRepository;
 
     public VerifyOtpCodeCommandHandler(
         IUserRepository userRepository,
         IUnitOfWork unitOfWork,
-        OtpCodeRepository otpCodeRepository)
+        IOtpCodeRepository otpCodeRepository)
     {
         this.userRepository = userRepository;
         this.unitOfWork = unitOfWork;
@@ -24,10 +24,10 @@ public class VerifyOtpCodeCommandHandler : ICommandHandler<VerifyOtpCodeCommand,
 
     public async Task<Result<int>> Handle([FromBody] VerifyOtpCodeCommand request, CancellationToken cancellationToken)
     {
-        var maybeUser = await userRepository.SelectUserWithOtpCodesAsync(request.UserId);
+        var maybeUser = await userRepository.SelectUserWithOtpCodesAsync(request.userId);
 
         if (maybeUser is null)
-            return Result.Failure<int>(DomainError.User.NotFound(request.UserId));
+            return Result.Failure<int>(DomainError.User.NotFound(request.userId));
 
         OtpCode? lastOtpCode = maybeUser.OtpCodes.OrderByDescending(p => p.CreatedAt).FirstOrDefault();
 
@@ -43,7 +43,7 @@ public class VerifyOtpCodeCommandHandler : ICommandHandler<VerifyOtpCodeCommand,
             return Result.Failure<int>(DomainError.OtpCode.Expired());
         }
 
-        if (!lastOtpCode.IsValid(request.OtpCode))
+        if (!lastOtpCode.IsValid(request.otpCode))
         {
             return Result.Failure<int>(
                 DomainError.OtpCode.InValid());
