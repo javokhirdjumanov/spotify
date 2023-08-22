@@ -8,13 +8,12 @@ public class UnitOfWork : IUnitOfWork
 {
     private readonly IServiceProvider _serviceProvider;
     private readonly EfCoreContext context;
-    public UnitOfWork(ICrudServices crudServices, IServiceProvider serviceProvider, EfCoreContext context)
+    public UnitOfWork(IServiceProvider serviceProvider, EfCoreContext context)
     {
-        CrudServicesAsync = crudServices;
         _serviceProvider = serviceProvider;
         this.context = context;
     }
-    public ICrudServices CrudServicesAsync { get; }
+
     public IDbContextTransaction CurrentTransaction { get => context.Database.CurrentTransaction; }
 
     public Task<IDbContextTransaction> BeginTransaction()
