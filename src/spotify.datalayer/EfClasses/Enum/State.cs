@@ -1,5 +1,4 @@
-﻿using spotify.datalayer.pgsql;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WEBASE.Models;
 
