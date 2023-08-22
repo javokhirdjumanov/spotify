@@ -7,19 +7,19 @@ namespace spotify.datalayer.Repositories;
 public class UnitOfWork : IUnitOfWork
 {
     private readonly IServiceProvider _serviceProvider;
-    public UnitOfWork(ICrudServices crudServices, IServiceProvider serviceProvider)
+    private readonly EfCoreContext context;
+    public UnitOfWork(ICrudServices crudServices, IServiceProvider serviceProvider, EfCoreContext context)
     {
-        Context = (EfCoreContext)crudServices.Context;
         CrudServicesAsync = crudServices;
         _serviceProvider = serviceProvider;
+        this.context = context;
     }
     public ICrudServices CrudServicesAsync { get; }
-    public EfCoreContext Context { get; }
-    public IDbContextTransaction CurrentTransaction { get => Context.Database.CurrentTransaction; }
+    public IDbContextTransaction CurrentTransaction { get => context.Database.CurrentTransaction; }
 
     public Task<IDbContextTransaction> BeginTransaction()
     {
-        return Context.Database.BeginTransactionAsync();
+        return context.Database.BeginTransactionAsync();
     }
     public async Task<TRepository> GetRepository<TRepository>()
     {
@@ -27,21 +27,21 @@ public class UnitOfWork : IUnitOfWork
     }
     public Task SaveChangesAsync()
     {
-        return Context.SaveChangesAsync();
+        return context.SaveChangesAsync();
     }
     public async Task CommitAsync()
     {
         SaveChangesAsync();
-        if (Context.Database.CurrentTransaction != null)
+        if (context.Database.CurrentTransaction != null)
         {
-            Context.Database.CurrentTransaction.Commit();
+            context.Database.CurrentTransaction.Commit();
         }
     }
     public async Task RollbackAsync()
     {
-        if (Context.Database.CurrentTransaction != null)
+        if (context.Database.CurrentTransaction != null)
         {
-            Context.Database.CurrentTransaction.Rollback();
+            context.Database.CurrentTransaction.Rollback();
         }
     }
 }

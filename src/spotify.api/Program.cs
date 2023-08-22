@@ -1,3 +1,4 @@
+using spotify.bizlayer;
 using spotify.datalayer;
 
 namespace spotify.api;
@@ -9,6 +10,7 @@ public class Program
 
         builder.Services
             .AddDataLayer(builder.Configuration)
+            .AddBizLayer(builder.Configuration)
             .AddApis(builder.Configuration);
 
         var app = builder.Build();

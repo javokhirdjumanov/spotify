@@ -5,8 +5,7 @@ using spotify.core.Shared;
 using System.Text;
 
 namespace spotify.api.Controllers;
-[Route("api/auth[action]")]
-[ApiController]
+
 public abstract class ApiController : ControllerBase
 {
     private readonly ISender sender;

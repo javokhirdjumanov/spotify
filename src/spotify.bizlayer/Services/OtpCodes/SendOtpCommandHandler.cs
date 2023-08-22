@@ -43,7 +43,7 @@ public class SendOtpCommandHandler
             body: EmailMessageExample.GetEmailBody(maybeUser.FirstName, newOtpCode.Code));
 
         await this._emailService.SendEmailAsync(mailRequest, cancellationToken);
-        await this._unitOfWork.SaveChangesAsync(cancellationToken);
+        await this._unitOfWork.SaveChangesAsync();
 
         return Result.Success<bool>(true);
     }

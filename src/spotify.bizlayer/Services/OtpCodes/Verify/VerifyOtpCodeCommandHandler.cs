@@ -1,4 +1,5 @@
-﻿using spotify.bizlayer.Abstractions;
+﻿using Microsoft.AspNetCore.Mvc;
+using spotify.bizlayer.Abstractions;
 using spotify.core.Errors;
 using spotify.core.Shared;
 using spotify.datalayer.EfClasses;
@@ -21,7 +22,7 @@ public class VerifyOtpCodeCommandHandler : ICommandHandler<VerifyOtpCodeCommand,
         this.otpCodeRepository = otpCodeRepository;
     }
 
-    public async Task<Result<int>> Handle(VerifyOtpCodeCommand request, CancellationToken cancellationToken)
+    public async Task<Result<int>> Handle([FromBody] VerifyOtpCodeCommand request, CancellationToken cancellationToken)
     {
         var maybeUser = await userRepository.SelectUserWithOtpCodesAsync(request.UserId);
 
