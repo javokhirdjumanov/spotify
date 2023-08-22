@@ -13,7 +13,7 @@ public class UserController : ApiController
     { }
 
     [HttpGet]
-    public async Task<IActionResult> GetUserList(CancellationToken cancellationToken)
+    public async Task<IActionResult> GetUsersList(CancellationToken cancellationToken)
     {
         var query = new GetAllUsersQuery();
 
