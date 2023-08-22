@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using spotify.bizlayer.Abstractions;
 using spotify.core.Shared;
 using spotify.datalayer.Repositories;
