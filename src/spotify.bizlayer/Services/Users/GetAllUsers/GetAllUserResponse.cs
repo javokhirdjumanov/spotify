@@ -1,7 +1,7 @@
 ﻿namespace spotify.bizlayer.Services.Users;
-public record GetAllUserResponse(IList<AllUserResponse> allUsers);
+public record GetAllUserResponse(IList<UserResponse> allUsers);
 
-public record AllUserResponse(
+public record UserResponse(
     string FirstName,
     string LastName,
     string Phone,
