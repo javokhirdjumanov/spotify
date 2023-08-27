@@ -5,7 +5,6 @@ using spotify.bizlayer.Services.Users;
 
 namespace spotify.api.Controllers;
 [Route("api/user/[action]")]
-//[ApiController]
 public class UserController : ApiController
 {
     public UserController(ISender sender, IServiceProvider serviceProvider) 
@@ -19,7 +18,8 @@ public class UserController : ApiController
 
         var response = await HandleAsync<GetAllUserResponse, GetAllUsersQuery>(query, cancellationToken);
 
-        if(response.IsFailure) return HandleFailure(response);
+        if(response.IsFailure)
+            return HandleFailure(response);
 
         return Ok(response.Value);
     }
