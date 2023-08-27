@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using spotify.datalayer.EfCode;
+using System.Linq.Expressions;
 
 namespace spotify.datalayer.Repositories;
 public class BaseRepository<T> : IBaseRepository<T> where T : class
@@ -22,6 +23,21 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class
             .FindAsync(
                 keyValues: entityIds,
                 cancellationToken: cancellationToken);
+    }
+
+    public async Task<T> SelectByIdWithDetailsAsync(
+        Expression<Func<T, bool>> expression,
+        string[] includes = null)
+    {
+        IQueryable<T> entities = this.SelectAllAsync();
+
+        foreach (var include in includes)
+        {
+            entities = entities.Include(include);
+        }
+
+        return await entities
+            .FirstOrDefaultAsync(expression);
     }
 
     public IQueryable<T> SelectAllAsync()
