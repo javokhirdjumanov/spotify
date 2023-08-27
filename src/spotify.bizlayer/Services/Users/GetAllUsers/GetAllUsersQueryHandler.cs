@@ -19,14 +19,24 @@ public class GetAllUsersQueryHandler : IQueryHandler<GetAllUsersQuery, GetAllUse
             GetAllUsersQuery request,
             CancellationToken cancellationToken)
     {
-        var users = userRepository.SelectAllAsync();
-        var allUserResponse = new GetAllUserResponse(new List<AllUserResponse>());
-        foreach (var item in users)
-        {
-            allUserResponse.allUsers.Add(
-                mapper.Map<AllUserResponse>(item));
-        }
+        var storageUsers = userRepository
+            .SelectAllAsync()
+            .Include(u => u.Status)
+            .Include(u => u.Role)
+            .ToList();
 
-        return allUserResponse;
+        var users = storageUsers
+            .Select(user => new AllUserResponse(
+                                user.FirstName,
+                                user.LastName,
+                                user.Phone,
+                                user.Email,
+                                user.Role.RoleName ?? "",
+                                user.Status.StatusName ?? ""
+                            )
+                    )
+            .ToList();
+
+        return Result<GetAllUserResponse>.Success(new GetAllUserResponse(users));
     }
 }
