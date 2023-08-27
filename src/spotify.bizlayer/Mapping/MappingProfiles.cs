@@ -9,7 +9,7 @@ namespace spotify.bizlayer.Mapping
         public MappingProfiles()
         {
             CreateMap<User, AllUserResponse>()
-                .ForMember(a => a.Status, cfg => cfg.MapFrom(user => user.Status.StatusName));
+                .ForMember(resp => resp.Status, cfg => cfg.MapFrom(user => user.Status.StatusName));
         }
     }
 }
