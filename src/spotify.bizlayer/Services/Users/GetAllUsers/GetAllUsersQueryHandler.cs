@@ -9,7 +9,9 @@ public class GetAllUsersQueryHandler : IQueryHandler<GetAllUsersQuery, GetAllUse
 {
     private readonly IUserRepository userRepository;
     private readonly IMapper mapper;
-    public GetAllUsersQueryHandler(IUserRepository userRepository, IMapper mapper)
+    public GetAllUsersQueryHandler(
+        IUserRepository userRepository,
+        IMapper mapper)
     {
         this.userRepository = userRepository;
         this.mapper = mapper;
@@ -26,17 +28,18 @@ public class GetAllUsersQueryHandler : IQueryHandler<GetAllUsersQuery, GetAllUse
             .ToList();
 
         var users = storageUsers
-            .Select(user => new AllUserResponse(
-                                user.FirstName,
-                                user.LastName,
-                                user.Phone,
-                                user.Email,
+            .Select(user => new UserResponse(
+                                user.FirstName ?? "",
+                                user.LastName ?? "",
+                                user.Phone ?? "",
+                                user.Email ?? "",
                                 user.Role.RoleName ?? "",
                                 user.Status.StatusName ?? ""
                             )
                     )
             .ToList();
 
-        return Result<GetAllUserResponse>.Success(new GetAllUserResponse(users));
+        return Result<GetAllUserResponse>
+            .Success(new GetAllUserResponse(users));
     }
 }
