@@ -8,7 +8,7 @@ namespace spotify.bizlayer.Mapping
     {
         public MappingProfiles()
         {
-            CreateMap<User, AllUserResponse>()
+            CreateMap<User, UserResponse>()
                 .ForMember(resp => resp.Status, cfg => cfg.MapFrom(user => user.Status.StatusName));
         }
     }
