@@ -24,7 +24,3 @@ public partial class EfCoreContext : DbContext
     public DbSet<UserSession> UserSessions { get; set; }
     #endregion
 }
-public partial class EfCoreContext
-{
-
-}
