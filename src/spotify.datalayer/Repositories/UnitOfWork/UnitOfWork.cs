@@ -15,7 +15,7 @@ public class UnitOfWork : IUnitOfWork
     }
 
     public IDbContextTransaction CurrentTransaction { get => context.Database.CurrentTransaction; }
-
+    public EfCoreContext GetContext() => this.context;
     public Task<IDbContextTransaction> BeginTransaction()
     {
         return context.Database.BeginTransactionAsync();

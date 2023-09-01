@@ -5,7 +5,7 @@ namespace spotify.datalayer.Repositories;
 public interface IUnitOfWork
 {
     IDbContextTransaction CurrentTransaction { get; }
-
+    EfCoreContext GetContext();
     Task<TRepository> GetRepository<TRepository>();
     Task<IDbContextTransaction> BeginTransaction();
     Task SaveChangesAsync();
